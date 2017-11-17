@@ -1,24 +1,14 @@
-# README
+# Study-Buddy (Work in progress)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Study-Buddy is a flash-card app for building custom study decks. I built this project to practice my React/Rails skills, and to help me study all the new technology I want to learn.
 
-Things you may want to cover:
+Built with:
+* Rails 5.1.2 - Backend framework
+* React 16.0.0 - Frontend
+* React-Router 3.0.5 - React rendering
+* Postgresql - SQL Database
+* Rspec, Capybara - Backend testing
+* Enzyme, Karma, Jasmine - Frontend testing
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+More coming soon...
