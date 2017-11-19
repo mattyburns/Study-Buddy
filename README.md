@@ -6,6 +6,7 @@ Built with:
 * Rails 5.1.2 - Backend framework
 * React 16.0.0 - Frontend
 * React-Router 3.0.5 - React rendering
+* Quill 1.3.4 - Rich text editor for flashcard content
 * Postgresql - SQL Database
 * Rspec, Capybara - Backend testing
 * Enzyme, Karma, Jasmine - Frontend testing
