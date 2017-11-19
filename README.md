@@ -11,5 +11,12 @@ Built with:
 * Rspec, Capybara - Backend testing
 * Enzyme, Karma, Jasmine - Frontend testing
 
+Getting Started 
+
+* Clone repo to a new project folder
+* Run bundle install to load Ruby Gems
+* Run yarn install to load packages
 
 More coming soon...
+
+
