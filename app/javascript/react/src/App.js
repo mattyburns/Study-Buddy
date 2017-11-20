@@ -1,14 +1,13 @@
 import React from 'react';
-import ReactQuill from 'react-quill';
-
+import TextEditor from './components/TextEditor'
 
 const App = props => {
   return(
     <div >
-      <ReactQuill/>
+      <TextEditor/>
       <p>BOOOO!</p>
     </div>
-      )
-      }
+  )
+}
 
       export default App
