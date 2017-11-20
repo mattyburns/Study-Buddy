@@ -1,9 +1,14 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
+
 
 const App = props => {
   return(
-    <h1>Hello World</h1>
-  )
-}
+    <div >
+      <ReactQuill/>
+      <p>BOOOO!</p>
+    </div>
+      )
+      }
 
-export default App
+      export default App
