@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import FlashCardInput from './containers/FlashCardInput'
+import FlashCardInput from './containers/FlashCardInput';
+import LandingPage from './components/LandingPage';
 
 
 class App extends Component {
@@ -46,12 +47,21 @@ class App extends Component {
   })
 }
   render(){
+    let pageView;
+    let landingPage = <LandingPage/>;
+    let homePage = <FlashCardInput
+      addNewCard={this.addNewCard}
+      currentUser={this.state.currentUser}/>;
+
+    if (this.state.signedIn == false){
+      pageView = landingPage
+    } else {
+      pageView = homePage
+    }
+
     return(
       <div>
-        <FlashCardInput
-          addNewCard={this.addNewCard}
-          currentUser={this.state.currentUser}
-        />
+        {pageView}
       </div>
     )
   }
