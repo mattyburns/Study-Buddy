@@ -11,6 +11,12 @@ class Api::V1::DecksController < ApplicationController
   end
 
   def show
+    if current_user
+      deck = Deck.find(params[:id])
+      render :json => {"deck" => deck}
+    else
+      render :json => {"signed_in" => false}
+    end
   end
 
 
