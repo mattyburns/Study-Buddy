@@ -1,12 +1,12 @@
 import React from 'react';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
-import FlashCardContainer from './containers/FlashCardContainer'
+import HomePageContainer from './containers/HomePageContainer'
 
 
 const App = props => {
   return(
     <Router history={browserHistory}>
-      <Route path='/' component={FlashCardContainer}/>
+      <Route path='/' component={HomePageContainer}/>
     </Router>
 
 
