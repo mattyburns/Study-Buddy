@@ -21,6 +21,13 @@ class Api::V1::DecksController < ApplicationController
 
 
   def create
+    deck = JSON.parse(request.body.read)
+    new_deck = Deck.create(
+      name: deck["name"],
+      description: deck["description"],
+      user_id: deck["userId"]
+    )
+    render json: new_deck
   end
 
   def edit

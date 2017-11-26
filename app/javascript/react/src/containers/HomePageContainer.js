@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DeckContainer from './DeckContainer';
 import LandingPage from '../components/LandingPage';
+import DeckForm from './DeckForm';
 
 
 class HomePageContainer extends Component {
@@ -10,9 +11,8 @@ class HomePageContainer extends Component {
       signedIn: "",
       currentUser: "",
       decks: []
-
-
     }
+    this.addNewDeck = this.addNewDeck.bind(this)
   }
 
   componentDidMount() {
@@ -37,23 +37,41 @@ class HomePageContainer extends Component {
     })
   }
 
+  addNewDeck(payLoad){
+    fetch(`/api/v1/decks`, {
+      method: 'POST',
+      body: JSON.stringify(payLoad)
+    })
+    .then(response => response.json())
+    .then(responseData =>{
+      this.setState({ decks: [responseData, ...this.state.decks] })
+    })
+  }
 
   render(){
-    let pageView;
-    let landingPage = <LandingPage/>;
-    let homePage = <DeckContainer decks={this.state.decks}/>;
+    let addNewDeck = (event) => this.addNewDeck(event)
 
     if (this.state.signedIn == false){
-      pageView = landingPage
+      return(
+        <div>
+          <LandingPage/>
+        </div>
+      )
     } else {
-      pageView = homePage
-    }
+      return(
 
-    return(
-      <div>
-        {pageView}
-      </div>
-    )
+        <div>
+          <DeckForm
+            currentUser={this.state.currentUser}
+            addNewDeck={this.addNewDeck}
+          />
+
+          <DeckContainer
+            decks={this.state.decks}
+          />
+        </div>
+      )
+    }
   }
 }
 
