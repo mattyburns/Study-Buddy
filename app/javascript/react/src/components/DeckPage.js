@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import FlashCardInput from '../containers/FlashCardInput';
+import FlashCardContainer from '../containers/FlashCardContainer';
+
 
 class DeckPage extends Component {
   constructor(props){
@@ -46,7 +47,7 @@ class DeckPage extends Component {
 }
   render(){
     return(
-      <FlashCardInput
+      <FlashCardContainer
         addNewCard={this.addNewCard}
         currentUser={this.state.currentUser}
       />
