@@ -1,10 +1,11 @@
 import React, { Component} from 'react';
+import { Link } from 'react-router';
 
 const DeckContainer = props => {
   let decks = (props.decks).map(deck => {
     return(
       <li key={deck.id}>
-        {deck.name}
+        <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
       </li>
     )
   })
