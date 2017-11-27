@@ -3,15 +3,23 @@ import FlashCardInput from './FlashCardInput';
 import BackButton from '../components/BackButton';
 
 const FlashCardContainer = props => {
+  let cards = (props.cards).map(card => {
+    return(
+      <li>
+        {card.front_content}
+      </li>
+    )
+  })
   return(
     <div>
       <FlashCardInput
         addNewCard={props.addNewCard}
         currentUser={props.currentUser}
+        deckId={props.deckId}
       />
-      
+
       <ul>
-        <li>List of Cards</li>
+        {cards}
       </ul>
 
       <BackButton/>

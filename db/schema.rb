@@ -10,25 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121020038) do
+ActiveRecord::Schema.define(version: 20171121015320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "deck_id"
     t.string "front_content", null: false
     t.string "back_content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
-  create_table "deck_associations", force: :cascade do |t|
-    t.integer "card_id"
-    t.integer "deck_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "decks", force: :cascade do |t|

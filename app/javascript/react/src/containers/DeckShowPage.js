@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import FlashCardContainer from '../containers/FlashCardContainer';
+import FlashCardContainer from './FlashCardContainer';
 
 
-class DeckPage extends Component {
+class DeckShowPage extends Component {
   constructor(props){
     super(props);
     this.state ={
@@ -24,35 +24,39 @@ class DeckPage extends Component {
       this.setState({signedIn: body.signed_in})
       this.setState({currentUser: body.user})
     })
-    fetch('/api/v1/cards', {
+    let deckId = this.props.params.id
+    fetch(`/api/v1/decks/${deckId}/cards`, {
       credentials: 'same-origin',
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({cards: body})
+      this.setState({cards: body.cards})
     })
   }
 
   addNewCard(payLoad) {
-  fetch('/api/v1/cards', {
-    method: 'POST',
-    body: JSON.stringify(payLoad)
-  })
-  .then(response => response.json())
-  .then(responseData =>{
-    this.setState({ cards: [responseData, ...this.state.cards] })
-  })
-}
+    let deckId = this.props.params.id
+    fetch(`/api/v1/decks/${deckId}/cards`, {
+      method: 'POST',
+      body: JSON.stringify(payLoad)
+    })
+    .then(response => response.json())
+    .then(responseData =>{
+      this.setState({ cards: [responseData, ...this.state.cards] })
+    })
+  }
   render(){
     return(
       <FlashCardContainer
         addNewCard={this.addNewCard}
         currentUser={this.state.currentUser}
+        deckId={this.props.params.id}
+        cards={this.state.cards}
       />
     )
   }
 }
 
-export default DeckPage;
+export default DeckShowPage;

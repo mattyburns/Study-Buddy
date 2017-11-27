@@ -27,9 +27,10 @@ class FlashCardInput extends Component {
     let payLoad = {
       frontContent: this.state.frontContent,
       backContent: this.state.backContent,
+      deckId: this.props.deckId,
       userId: this.props.currentUser.id
-
     }
+    debugger
     this.props.addNewCard(payLoad);
   }
 
