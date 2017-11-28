@@ -7,8 +7,12 @@ const FlashCardContainer = props => {
   let cards = (props.cards).map(card => {
     return(
       <li>
-        <Link to={`/decks/${props.deckId}/cards/${card.id}`}>{card.front_content}</Link>
+        <Link
+          to={`/decks/${props.deckId}/cards/${card.id}`}
+          dangerouslySetInnerHTML={{ __html: card.front_content }}
+        />
       </li>
+
     )
   })
   return(
@@ -23,12 +27,12 @@ const FlashCardContainer = props => {
         {cards}
       </ul>
 
+
       <BackButton/>
 
     </div>
 
   )
 }
-
 
 export default FlashCardContainer;
