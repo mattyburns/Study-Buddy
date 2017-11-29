@@ -14,7 +14,8 @@ class Api::V1::CardsController < ApplicationController
 
   def show
     if current_user
-    render json: {"cards" => current_user.cards}
+      card = Card.find(params[:id])
+      render json: {"cards" => card}
     else
       render json: {"signed_in" => false}
     end
