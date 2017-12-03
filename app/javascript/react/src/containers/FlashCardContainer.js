@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 const FlashCardContainer = props => {
   let cards = (props.cards).map(card => {
     return(
-      <li>
+      <li key={card.id}>
         <Link
           to={`/decks/${props.deckId}/cards/${card.id}`}
           dangerouslySetInnerHTML={{ __html: card.front_content }}
