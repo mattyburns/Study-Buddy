@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardTile from '../components/CardTile';
+import FlashCardEdit from './FlashCardEdit';
 
 class CardShowPage extends Component{
   constructor(props){
@@ -30,8 +31,12 @@ class CardShowPage extends Component{
     return(
       <div>
         <h1>Card Show page</h1>
-        
+
         <CardTile
+          card={this.state.card}
+        />
+
+        <FlashCardEdit
           card={this.state.card}
         />
 

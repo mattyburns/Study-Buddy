@@ -31,4 +31,21 @@ class Api::V1::CardsController < ApplicationController
     )
     render json: new_card
   end
+
+  def edit
+    card = Card.find(params[:id])
+    render json: card
+  end
+
+  def update
+    card = Card.find(params[:id])
+    card_update = JSON.parse(request.body.read)
+    card.update(
+      front_content: card_update["frontContent"],
+      back_content: card_update["backContent"],
+      deck_id: card_update["deckId"],
+      user_id: card_update["userId"]
+    )
+    render json: {"message" => "Update saved"}
+  end
 end
