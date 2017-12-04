@@ -17,19 +17,22 @@ const FlashCardContainer = props => {
   })
   return(
     <div>
-      <FlashCardInput
-        addNewCard={props.addNewCard}
-        currentUser={props.currentUser}
-        deckId={props.deckId}
-      />
-      
-      <ul>
-        {cards}
-      </ul>
-
+      <div className="callout">
+        <h3>Add a new card to this deck.</h3>
+        <FlashCardInput
+          addNewCard={props.addNewCard}
+          currentUser={props.currentUser}
+          deckId={props.deckId}
+        />
+      </div>
+      <div className="callout">
+        <ul>
+          {cards}
+        </ul>
+      </div>
 
       <BackButton/>
-
+      
     </div>
 
   )

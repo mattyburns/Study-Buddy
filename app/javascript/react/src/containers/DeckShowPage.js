@@ -49,12 +49,14 @@ class DeckShowPage extends Component {
   }
   render(){
     return(
-      <FlashCardContainer
-        addNewCard={this.addNewCard}
-        currentUser={this.state.currentUser}
-        deckId={this.props.params.id}
-        cards={this.state.cards}
-      />
+      <div>
+        <FlashCardContainer
+          addNewCard={this.addNewCard}
+          currentUser={this.state.currentUser}
+          deckId={this.props.params.id}
+          cards={this.state.cards}
+        />
+      </div>
     )
   }
 }
