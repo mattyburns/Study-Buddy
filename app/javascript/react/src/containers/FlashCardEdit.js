@@ -70,6 +70,20 @@ class FlashCardEdit extends Component {
   render(){
     let handleSubmit = (event) => this.handleSubmit(event)
     let editCard = (event) => this.editCard(event)
+    let message;
+
+    if (this.state.updateMessage == ""){
+      message = ''
+    }else {
+      message =
+      <div className="success callout" data-closable="slide-out-right">
+        <p>{this.state.updateMessage}.</p>
+        <button className="close-button" aria-label="Dismiss alert" type="button" data-close="">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    }
+
     return(
       <div>
         <button className="button" onClick={editCard}>Edit</button>
@@ -90,7 +104,9 @@ class FlashCardEdit extends Component {
           </div>
           <button className ="button" onClick={handleSubmit}>Save Edits</button>
         </div>
-        <h1>{this.state.updateMessage}</h1>
+        <div>
+          {message}
+        </div>
       </div>
     )
   }

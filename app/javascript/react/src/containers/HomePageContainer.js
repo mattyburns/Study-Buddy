@@ -61,14 +61,19 @@ class HomePageContainer extends Component {
       return(
 
         <div>
-          <DeckForm
-            currentUser={this.state.currentUser}
-            addNewDeck={this.addNewDeck}
-          />
+          <div className="callout">
+            <h3>Add a new deck</h3>
+            <DeckForm
+              currentUser={this.state.currentUser}
+              addNewDeck={this.addNewDeck}
+            />
+          </div>
 
-          <DeckContainer
-            decks={this.state.decks}
-          />
+          <div className="callout">
+            <DeckContainer
+              decks={this.state.decks}
+            />
+          </div>
         </div>
       )
     }
