@@ -36,23 +36,25 @@ class FlashCardInput extends Component {
   render(){
     let handleSubmit = (event) => this.handleSubmit(event)
     return(
-      <div className="grid-x">
-        <div className="small-12 large-6 cell callout large">
-          <h2>Front of Card</h2>
-          <ReactQuill
-            value={this.state.frontContent}
-            onChange={this.handleChangeFront}
-          />
+
+        <div className="grid-x">
+          <div className="small-12 large-6 cell callout large">
+            <h2>Front of Card</h2>
+            <ReactQuill
+              value={this.state.frontContent}
+              onChange={this.handleChangeFront}
+            />
+          </div>
+          <div className="small-12 large-6 cell callout large">
+            <h2>Back of Card</h2>
+            <ReactQuill
+              value={this.state.backContent}
+              onChange={this.handleChangeBack}
+            />
+          </div>
+          <button className ="button" onClick={handleSubmit}>Create Card</button>
         </div>
-        <div className="small-12 large-6 cell callout large">
-          <h2>Back of Card</h2>
-          <ReactQuill
-            value={this.state.backContent}
-            onChange={this.handleChangeBack}
-          />
-        </div>
-        <button className ="button" onClick={handleSubmit}>Create Card</button>
-      </div>
+    
     )
   }
 }

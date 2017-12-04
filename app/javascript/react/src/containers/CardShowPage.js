@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CardTile from '../components/CardTile';
 import FlashCardEdit from './FlashCardEdit';
+import BackButton from '../components/BackButton';
 
 class CardShowPage extends Component{
   constructor(props){
@@ -39,6 +40,8 @@ class CardShowPage extends Component{
         <FlashCardEdit
           card={this.state.card}
         />
+
+        <BackButton/>
 
       </div>
 
