@@ -40,8 +40,8 @@ class Api::V1::DecksController < ApplicationController
     deck = Deck.find(params[:id])
     deck_update = JSON.parse(request.body.read)
     deck.update(
-      :name = deck_update["name"],
-      :description = deck_update["description"]
+      name: deck_update["name"],
+      description: deck_update["description"]
     )
     render :json => {"message" => "Update saved."}
   end
