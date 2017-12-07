@@ -31,12 +31,25 @@ class Api::V1::DecksController < ApplicationController
   end
 
   def edit
+    deck = Deck.find(params[:id])
+    render json: deck
+
   end
 
   def update
+    deck = Deck.find(params[:id])
+    deck_update = JSON.parse(request.body.read)
+    deck.update(
+      :name = deck_update["name"],
+      :description = deck_update["description"]
+    )
+    render :json => {"message" => "Update saved."}
   end
 
   def destroy
+    deck = Deck.find(params[:id])
+    deck.destroy
+    render :json => {"decks" => current_user.decks}
   end
 
 
