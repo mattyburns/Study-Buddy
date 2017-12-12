@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FlashCardContainer from './FlashCardContainer';
+import DeckEdit from './DeckEdit';
 
 
 class DeckShowPage extends Component {
@@ -55,6 +56,11 @@ class DeckShowPage extends Component {
           currentUser={this.state.currentUser}
           deckId={this.props.params.id}
           cards={this.state.cards}
+        />
+
+        <DeckEdit
+          currentUser={this.state.currentUser}
+          deckId={this.props.params.id}
         />
       </div>
     )
