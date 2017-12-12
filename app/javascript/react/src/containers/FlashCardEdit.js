@@ -32,6 +32,7 @@ class FlashCardEdit extends Component {
       this.setState({ backContent: body.back_content})
       this.setState({ deckId: body.deck_id})
       this.setState({ userId: body.user_id})
+      this.setState({updateMessage: ""})
     })
   }
 
@@ -56,6 +57,14 @@ class FlashCardEdit extends Component {
     this.setState({backContent:value})
   }
 
+  handleClearForm(event) {
+    event.preventDefault();
+    this.setState({
+      frontContent: "",
+      backContent: "",
+    })
+  }
+
   handleSubmit(event){
     event.preventDefault();
     let payLoad = {
@@ -65,6 +74,7 @@ class FlashCardEdit extends Component {
       userId: this.props.card.user_id
     }
     this.updateCard(payLoad);
+    this.handleClearForm(event);
   }
 
   render(){
@@ -87,7 +97,7 @@ class FlashCardEdit extends Component {
     return(
       <div>
         <button className="button" onClick={editCard}>Edit</button>
-        
+
         <div className="grid-x">
           <div className="small-12 large-6 cell callout large">
             <h2>Front of Card</h2>
