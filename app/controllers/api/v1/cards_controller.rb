@@ -55,4 +55,8 @@ class Api::V1::CardsController < ApplicationController
     card.destroy
     render :json => { "cards" => deck.cards }
   end
+
+  def destroy
+  end
+
 end

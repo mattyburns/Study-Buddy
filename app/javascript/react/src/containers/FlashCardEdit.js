@@ -87,6 +87,7 @@ class FlashCardEdit extends Component {
     return(
       <div>
         <button className="button" onClick={editCard}>Edit</button>
+        
         <div className="grid-x">
           <div className="small-12 large-6 cell callout large">
             <h2>Front of Card</h2>
