@@ -48,4 +48,8 @@ class Api::V1::CardsController < ApplicationController
     )
     render json: {"message" => "Update saved"}
   end
+
+  def destroy
+  end
+
 end
