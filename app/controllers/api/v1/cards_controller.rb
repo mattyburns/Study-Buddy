@@ -46,7 +46,14 @@ class Api::V1::CardsController < ApplicationController
       deck_id: card_update["deckId"],
       user_id: card_update["userId"]
     )
-    render json: {"message" => "Update saved"}
+    render :json => {"message" => "Update saved."}
+  end
+
+  def destroy
+    deck = Deck.find(params[:deck_id])
+    card = Card.find(params[:id])
+    card.destroy
+    render :json => { "cards" => deck.cards }
   end
 
   def destroy
