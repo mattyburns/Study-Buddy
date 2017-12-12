@@ -37,9 +37,12 @@ class Api::V1::DecksController < ApplicationController
   def update
     deck = Deck.find(params[:id])
     deck_update = JSON.parse(request.body.read)
+    binding.pry
     deck.update(
+      user_id: deck_update["userId"],
       name: deck_update["name"],
-      description: deck_update["description"]
+      description: deck_update["description"],
+
     )
     render json: {"message" => "Update saved"}
   end

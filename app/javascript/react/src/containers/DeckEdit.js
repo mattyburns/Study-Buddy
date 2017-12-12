@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import FormField from '../components/FormField';
 
 class DeckEdit extends Component {
   constructor(props){
     super(props);
     this.state={
-      currentName: "",
-      currentDescription: "",
-      updateMessage: ""
+      name: "",
+      description: "",
+      updateMessage: "",
+      test:""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -15,7 +17,7 @@ class DeckEdit extends Component {
   }
 
   editDeck(event){
-    let deckId = this.event.target.id //need to get deck id
+    let deckId = this.props.deckId
     fetch(`/api/v1/decks/${deckId}/edit`, {
       credentials: 'same-origin',
       method: 'GET',
@@ -23,13 +25,13 @@ class DeckEdit extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({ currentName: body.name})
-      this.setState({ currentDescription: body.description})
+      this.setState({ name: body.name})
+      this.setState({ description: body.description})
     })
   }
 
-  updateDeck(payLoad) { // need to get deck id
-    let deckId = this.event.target.id
+  updateDeck(payLoad) {
+    let deckId = this.props.deckId
     fetch(`/api/v1/decks/${deckId}`, {
       method: 'PUT',
       body: JSON.stringify(payLoad)
@@ -40,16 +42,22 @@ class DeckEdit extends Component {
     })
   }
 
-  handleChange(value){
-    this.setState({currentName:value})
-    this.setState({currentDescription:value})
+  handleChange(event){
+    let field = event.target.name
+    let newValue = event.target.value
+    this.setState({[field]: newValue})
+  }
+
+  handleChangeDescription(event){
+    this.setState({description:value})
   }
 
   handleSubmit(event){
     event.preventDefault();
     let payLoad = {
-      name: this.state.currentName,
-      description: this.state.currentDescription
+      userId: this.props.currentUser.id,
+      name: this.state.name,
+      description: this.state.description
     }
     this.updateDeck(payLoad);
   }
@@ -57,34 +65,41 @@ class DeckEdit extends Component {
   render(){
     let handleChange = (event) => this.handleChange(event)
     let handleSubmit = (event) => this.handleSubmit(event)
+    let editDeck = (event) => this.editDeck(event)
 
     return(
-      <form>
-        <div className="grid-container">
-          <div className="grid-x grid-padding-x">
 
-            <div className="medium-6 cell">
-              <FormField
-                name="name"
-                content={this.state.currentName}
-                label="Deck Title:"
-                handler={this.handleChange}
-              />
+      <div>
+
+        <button className="button" onClick={editDeck}>Edit</button>
+
+        <form>
+          <div className="grid-container">
+            <div className="grid-x grid-padding-x">
+
+              <div className="medium-6 cell">
+                <FormField
+                  name="name"
+                  content={this.state.name}
+                  label="Deck Title:"
+                  handler={this.handleChange}
+                />
+              </div>
+
+              <div className="medium-6 cell">
+                <FormField
+                  name="description"
+                  content={this.state.description}
+                  label="Description of Deck:"
+                  handler={this.handleChange}
+                />
+              </div>
+
+              <input type="submit" className="button" value="Save Updates" onClick={handleSubmit}/>
             </div>
-
-            <div className="medium-6 cell">
-              <FormField
-                name="description"
-                content={this.state.currentDescription}
-                label="Description of Deck:"
-                handler={this.handleChange}
-              />
-            </div>
-
-            <input type="submit" className="button" value="Save" onClick={handleSubmit}/>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     )
   }
 }
