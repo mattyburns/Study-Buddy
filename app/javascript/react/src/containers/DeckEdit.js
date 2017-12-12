@@ -7,13 +7,13 @@ class DeckEdit extends Component {
     this.state={
       name: "",
       description: "",
-      updateMessage: "",
-      test:""
+      updateMessage: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.editDeck = this.editDeck.bind(this)
     this.updateDeck = this.updateDeck.bind(this)
+    this.handleClearForm = this.handleClearForm.bind(this)
   }
 
   editDeck(event){
@@ -27,6 +27,7 @@ class DeckEdit extends Component {
     .then(body => {
       this.setState({ name: body.name})
       this.setState({ description: body.description})
+      this.setState({updateMessage: ""})
     })
   }
 
@@ -39,6 +40,7 @@ class DeckEdit extends Component {
     .then(response => response.json())
     .then(responseData =>{
       this.setState({ updateMessage: responseData.message })
+
     })
   }
 
@@ -52,6 +54,14 @@ class DeckEdit extends Component {
     this.setState({description:value})
   }
 
+  handleClearForm(event) {
+    event.preventDefault();
+    this.setState({
+      name: '',
+      description:''
+    })
+  }
+
   handleSubmit(event){
     event.preventDefault();
     let payLoad = {
@@ -60,17 +70,33 @@ class DeckEdit extends Component {
       description: this.state.description
     }
     this.updateDeck(payLoad);
+    this.handleClearForm(event)
   }
+
 
   render(){
     let handleChange = (event) => this.handleChange(event)
     let handleSubmit = (event) => this.handleSubmit(event)
     let editDeck = (event) => this.editDeck(event)
+    let message;
+
+    if (this.state.updateMessage == ""){
+      message = ''
+    }else {
+
+      message =
+      <div className="success callout" data-closable="slide-out-right">
+        <p>{this.state.updateMessage}.</p>
+        <button className="close-button" aria-label="Dismiss alert" type="button" data-close="">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    }
 
     return(
 
       <div>
-
+        {message}
         <button className="button" onClick={editDeck}>Edit</button>
 
         <form>
