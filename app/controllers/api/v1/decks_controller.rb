@@ -51,5 +51,6 @@ class Api::V1::DecksController < ApplicationController
     deck.destroy
     render :json => {"decks" => current_user.decks}
   end
+  
 
 end
