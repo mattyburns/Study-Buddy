@@ -47,6 +47,9 @@ class Api::V1::DecksController < ApplicationController
   end
 
   def destroy
+    deck = Deck.find(params[:id])
+    deck.destroy
+    render :json => {"decks" => current_user.decks}
   end
 
 end
