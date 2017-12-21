@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DeckContainer from './DeckContainer';
 import LandingPage from '../components/LandingPage';
 import DeckForm from './DeckForm';
+import { Link } from 'react-router';
 
 
 class HomePageContainer extends Component {
@@ -59,8 +60,10 @@ class HomePageContainer extends Component {
       )
     } else {
       return(
-
         <div>
+          <div>
+            <Link to={'/study/decks'}>Study Mode</Link>
+          </div>
           <div className="callout">
             <h3>Add a new deck</h3>
             <DeckForm
@@ -68,7 +71,7 @@ class HomePageContainer extends Component {
               addNewDeck={this.addNewDeck}
             />
           </div>
-
+          
           <div className="callout">
             <DeckContainer
               decks={this.state.decks}
