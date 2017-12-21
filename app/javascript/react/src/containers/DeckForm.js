@@ -67,32 +67,36 @@ class DeckForm extends Component{
   render(){
     let handleSubmit = (event) => this.validateSubmit(event);
     return(
-      <form>
-        <div className="grid-container">
-          <div className="grid-x grid-padding-x">
+      <div>
+        {this.state.errors}
+        <form>
+          <div className="grid-container">
+            <div className="grid-x grid-padding-x">
+              
+              <div className="medium-6 cell">
+                <FormField
+                  name="name"
+                  content={this.state.name}
+                  label="Deck Title:"
+                  handler={this.handleChange}
+                />
+              </div>
 
-            <div className="medium-6 cell">
-              <FormField
-                name="name"
-                content={this.state.name}
-                label="Deck Title:"
-                handler={this.handleChange}
-              />
+              <div className="medium-6 cell">
+                <FormField
+                  name="description"
+                  content={this.state.description}
+                  label="Description of Deck:"
+                  handler={this.handleChange}
+                />
+              </div>
+
+              <input type="submit" className="button" value="Save" onClick={handleSubmit}/>
             </div>
-
-            <div className="medium-6 cell">
-              <FormField
-                name="description"
-                content={this.state.description}
-                label="Description of Deck:"
-                handler={this.handleChange}
-              />
-            </div>
-
-            <input type="submit" className="button" value="Save" onClick={handleSubmit}/>
           </div>
-        </div>
-      </form>
+        </form>
+
+      </div>
 
     )
   }
