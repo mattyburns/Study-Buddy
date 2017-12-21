@@ -7,11 +7,13 @@ class FlashCardInput extends Component {
     super(props);
     this.state ={
       frontContent: "",
-      backContent: ""
+      backContent: "",
+      errorMessage: ""
     }
     this.handleChangeFront = this.handleChangeFront.bind(this);
     this.handleChangeBack = this.handleChangeBack.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClearForm = this.handleClearForm.bind(this);
   }
 
   handleChangeFront(value){
@@ -22,6 +24,12 @@ class FlashCardInput extends Component {
     this.setState({backContent:value})
   }
 
+  handleClearForm(){
+    this.setState({frontContent: ""});
+    this.setState({backContent: ""});
+    this.setState({errorMessage: ""});
+  }
+
   handleSubmit(event){
     event.preventDefault();
     let payLoad = {
@@ -30,14 +38,24 @@ class FlashCardInput extends Component {
       deckId: this.props.deckId,
       userId: this.props.currentUser.id
     }
-    this.props.addNewCard(payLoad);
+
+    if(this.state.frontContent === "" || this.state.backContent === ""){
+      this.setState({errorMessage: "Can't leave either side of card blank!"})
+    }else{
+      this.props.addNewCard(payLoad);
+      this.handleClearForm();
+
+
+    }
   }
 
   render(){
     let handleSubmit = (event) => this.handleSubmit(event)
     return(
 
+
         <div className="grid-x">
+          <div>{this.state.errorMessage}</div>
           <div className="small-12 large-6 cell callout large">
             <h2>Front of Card</h2>
             <ReactQuill
@@ -54,7 +72,7 @@ class FlashCardInput extends Component {
           </div>
           <button className ="button" onClick={handleSubmit}>Create Card</button>
         </div>
-    
+
     )
   }
 }
