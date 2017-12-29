@@ -5,7 +5,7 @@ import DeckForm from './DeckForm';
 import { Link } from 'react-router';
 
 
-class HomePageContainer extends Component {
+class BuildPage extends Component {
   constructor(props){
     super(props);
     this.state ={
@@ -52,22 +52,25 @@ class HomePageContainer extends Component {
   render(){
     let addNewDeck = (event) => this.addNewDeck(event)
 
-    if (this.state.signedIn == false){
-      return(
-        <div>
-          <LandingPage/>
+    return(
+      <div>
+        <div className="callout">
+          <h3>Add a new deck</h3>
+          <DeckForm
+            currentUser={this.state.currentUser}
+            addNewDeck={this.addNewDeck}
+          />
         </div>
-      )
-    } else {
-      return(
-        <div>
-          <Link to={'/study/decks'}>Study Mode</Link>
-          <Link to={'/build/decks'}>Build Mode</Link>
+
+        <div className="callout">
+          <DeckContainer
+            decks={this.state.decks}
+          />
         </div>
-      )
-    }
+      </div>
+    )
   }
 }
 
 
-export default HomePageContainer;
+export default BuildPage;
