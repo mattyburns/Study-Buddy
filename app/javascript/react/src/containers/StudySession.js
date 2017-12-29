@@ -28,9 +28,12 @@ class StudySession extends Component {
 
   render(){
     let cards = (this.state.cards).map( card => {
-      return(
-        prompt("Hello")
-      )
+      let answer = prompt("Hello")
+        if (answer === "yes"){
+          return (alert("WooHoo!"))
+        }else{
+          return(alert("Boo!"))
+        }
     })
 
     return(
