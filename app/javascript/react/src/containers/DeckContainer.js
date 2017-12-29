@@ -12,7 +12,7 @@ const DeckContainer = props => {
 
   return(
     <div>
-      <h4>Select a deck to edit.</h4>
+      <h4>{props.title}</h4>
       <ul>
         {decks}
       </ul>

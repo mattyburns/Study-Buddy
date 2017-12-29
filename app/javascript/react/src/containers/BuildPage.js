@@ -3,6 +3,7 @@ import DeckContainer from './DeckContainer';
 import LandingPage from '../components/LandingPage';
 import DeckForm from './DeckForm';
 import { Link } from 'react-router';
+import BackButton from '../components/BackButton';
 
 
 class BuildPage extends Component {
@@ -65,8 +66,10 @@ class BuildPage extends Component {
         <div className="callout">
           <DeckContainer
             decks={this.state.decks}
+            title="Select a deck to edit."
           />
         </div>
+        <BackButton/>
       </div>
     )
   }
