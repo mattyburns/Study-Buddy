@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import BackButton from '../components/BackButton'
 
+
+
 class StudySession extends Component {
   constructor(props){
     super(props);
@@ -26,11 +28,14 @@ class StudySession extends Component {
 
   render(){
     let cards = (this.state.cards).map( card => {
-      return(
-        <p key={card.id} dangerouslySetInnerHTML={{ __html: card.front_content }}></p>
-
-      )
+      let answer = prompt("Hello")
+        if (answer === "yes"){
+          return (alert("WooHoo!"))
+        }else{
+          return(alert("Boo!"))
+        }
     })
+
     return(
       <div>
         {cards}
