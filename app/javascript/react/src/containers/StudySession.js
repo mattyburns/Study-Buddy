@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import BackButton from '../components/BackButton'
 
+
+
 class StudySession extends Component {
   constructor(props){
     super(props);
@@ -27,10 +29,10 @@ class StudySession extends Component {
   render(){
     let cards = (this.state.cards).map( card => {
       return(
-        <p key={card.id} dangerouslySetInnerHTML={{ __html: card.front_content }}></p>
-
+        prompt("Hello")
       )
     })
+
     return(
       <div>
         {cards}
