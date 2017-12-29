@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DeckContainer from './DeckContainer';
 import LandingPage from '../components/LandingPage';
 import DeckForm from './DeckForm';
-import { Link } from 'react-router';
 import BackButton from '../components/BackButton';
 
 
@@ -67,6 +66,7 @@ class BuildPage extends Component {
           <DeckContainer
             decks={this.state.decks}
             title="Select a deck to edit."
+            mode = "build"
           />
         </div>
         <BackButton/>

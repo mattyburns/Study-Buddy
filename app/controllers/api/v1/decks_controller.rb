@@ -13,7 +13,7 @@ class Api::V1::DecksController < ApplicationController
   def show
     if current_user
       deck = Deck.find(params[:id])
-      render :json => {"deck" => deck}
+      render :json => {"deck" => deck, "cards" => deck.cards}
     else
       render :json => {"signed_in" => false}
     end
@@ -51,6 +51,6 @@ class Api::V1::DecksController < ApplicationController
     deck.destroy
     render :json => {"decks" => current_user.decks}
   end
-  
+
 
 end

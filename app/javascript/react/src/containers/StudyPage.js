@@ -42,6 +42,7 @@ class StudyPage extends Component{
         <DeckContainer
           decks={this.state.decks}
           title ="Select a deck to study."
+          mode = "study"
         />
 
       </div>

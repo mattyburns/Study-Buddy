@@ -8,7 +8,7 @@ const FlashCardContainer = props => {
     return(
       <li key={card.id}>
         <Link
-          to={`/decks/${props.deckId}/cards/${card.id}`}
+          to={`/build/decks/${props.deckId}/cards/${card.id}`}
           dangerouslySetInnerHTML={{ __html: card.front_content }}
         />
       </li>
@@ -32,7 +32,7 @@ const FlashCardContainer = props => {
       </div>
 
       <BackButton/>
-      
+
     </div>
 
   )
