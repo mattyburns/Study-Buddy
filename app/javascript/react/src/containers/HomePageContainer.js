@@ -3,6 +3,8 @@ import DeckContainer from './DeckContainer';
 import LandingPage from '../components/LandingPage';
 import DeckForm from './DeckForm';
 import { Link } from 'react-router';
+import Study from '../images/study.png';
+import Build from '../images/build.png';
 
 
 class HomePageContainer extends Component {
@@ -61,8 +63,8 @@ class HomePageContainer extends Component {
     } else {
       return(
         <div>
-          <Link to={'/study/decks'}>Study Mode</Link>
-          <Link to={'/build/decks'}>Build Mode</Link>
+          <Link to={'/study/decks'}><img src={Study} alt="Study mode"></img></Link>
+          <Link to={'/build/decks'}><img src={Build} alt="Build mode"></img></Link>
         </div>
       )
     }
