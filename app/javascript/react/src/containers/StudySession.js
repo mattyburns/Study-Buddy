@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BackButton from '../components/BackButton'
+import Timer from './Timer';
 
 
 
@@ -41,6 +42,7 @@ class StudySession extends Component {
         {cards}
         <h1>I am a study session</h1>
         <BackButton/>
+        <Timer/>
       </div>
 
     )
