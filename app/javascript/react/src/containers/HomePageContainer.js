@@ -71,5 +71,4 @@ class HomePageContainer extends Component {
   }
 }
 
-
 export default HomePageContainer;
